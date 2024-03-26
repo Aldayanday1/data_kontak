@@ -39,6 +39,12 @@ class KontakController {
               decodedJson['message'] ?? 'Terjadi kesalahan saat menyimpan data',
         };
       }
-    } catch (e) {}
+    } catch (e) {
+      // Menangkap kesalahan jaringan atau saat decoding JSON
+      return {
+        'success': false,
+        'message': 'Terjadi kesalahan: $e',
+      };
+    }
   }
 }
