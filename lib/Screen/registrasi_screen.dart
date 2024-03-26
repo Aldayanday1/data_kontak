@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:data_kontak/Controller/kontak_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -92,7 +93,10 @@ class _FormKontakState extends State<FormKontak> {
             margin: EdgeInsets.all(10),
             child: ElevatedButton(
               onPressed: () async {
-                if (_formkey.currentState!.validate()) {}
+                if (_formkey.currentState!.validate()) {
+                  // Proses simpan data
+                  var result = await KontakController().addPerson()
+                }
               },
               child: Text("Simpan"),
             ),
