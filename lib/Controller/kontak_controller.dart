@@ -13,5 +13,9 @@ class KontakController {
       'alamat': person.alamat,
       'no_telepon': person.noTelepon,
     };
+
+    try {
+      var response = await kontakService.addPerson(data, file);
+    } catch (e) {}
   }
 }
