@@ -32,6 +32,12 @@ class KontakController {
             'message': decodedJson['message'] ?? 'Terjadi kesalahan',
           };
         }
+        var decodedJson = jsonDecode(response.body);
+        return {
+          'success': false,
+          'message':
+              decodedJson['message'] ?? 'Terjadi kesalahan saat menyimpan data',
+        };
       }
     } catch (e) {}
   }
