@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:data_kontak/Service/kontak_service.dart';
@@ -16,6 +17,22 @@ class KontakController {
 
     try {
       var response = await kontakService.addPerson(data, file);
+
+      if (response.statusCode == 201) {
+        return {
+          'success': true,
+          'message': 'Data berhasil disimpan',
+        };
+      } else {
+        // Penanganan ketika Content-Type bukan application/json
+        if (response.headers['content-type']!.contains('application/json')) {
+          var decodedJson = jsonDecode(response.body);
+          return {
+            'success': false,
+            'message': decodedJson['message'] ?? 'Terjadi kesalahan',
+          };
+        }
+      }
     } catch (e) {}
   }
 }
