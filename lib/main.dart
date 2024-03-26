@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'Screen/registrasi_screen.dart';
+import 'presentation/views/registrasi_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,10 +15,10 @@ class MyApp extends StatelessWidget {
       title: "Data Kontak",
       home: Scaffold(
         appBar: AppBar(
-          title: Text("Data Kontak"),
+          title: const Text("Data Kontak"),
           centerTitle: true,
         ),
-        body: FormKontak(),
+        body: const FormKontak(),
       ),
     );
   }

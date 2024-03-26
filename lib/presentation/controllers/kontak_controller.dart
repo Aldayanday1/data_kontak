@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:data_kontak/Service/kontak_service.dart';
-import 'package:data_kontak/data_kontak/kontak.dart';
+import 'package:data_kontak/data/services/kontak_service.dart';
+import 'package:data_kontak/domain/model/kontak.dart';
 
 class KontakController {
   final KontakService kontakService = KontakService();
