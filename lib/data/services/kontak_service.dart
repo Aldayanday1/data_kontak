@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 import 'package:http/http.dart' as http;
 
@@ -33,5 +34,12 @@ class KontakService {
         "Accept": "application/json",
       },
     );
+    if (response.statusCode == 200) {
+      final Map<String, dynamic> decodedResponse = json.decode(response.body);
+      return decodedResponse[
+          'people']; // Akses array people dari objek response
+    } else {
+      throw Exception('Failed to load people: ${response.reasonPhrase}');
+    }
   }
 }
