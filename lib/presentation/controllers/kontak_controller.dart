@@ -55,6 +55,9 @@ class KontakController {
       List<Person> people =
           peopleData.map((json) => Person.fromMap(json)).toList();
       return people;
-    } catch (e) {}
+    } catch (e) {
+      print(e);
+    }
+    throw Exception('Failed to get people');
   }
 }
