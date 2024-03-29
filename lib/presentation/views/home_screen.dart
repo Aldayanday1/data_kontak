@@ -1,3 +1,4 @@
+import 'package:data_kontak/domain/model/person.dart';
 import 'package:data_kontak/presentation/controllers/kontak_controller.dart';
 import 'package:flutter/material.dart';
 
@@ -21,6 +22,16 @@ class _HomeViewState extends State<HomeView> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Daftar Orang"),
+      ),
+      body: FutureBuilder<List<Person>>(
+        future: _controller.getPeople(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(child: CircularProgressIndicator());
+          } else if (snapshot.hasError) {
+            return Center(child: Text("Error: ${snapshot.error}"));
+          } else {}
+        },
       ),
     );
   }
