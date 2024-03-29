@@ -18,6 +18,10 @@ class _HomeViewState extends State<HomeView> {
   }
 
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Daftar Orang"),
+      ),
+    );
   }
 }
