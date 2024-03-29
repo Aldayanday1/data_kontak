@@ -13,13 +13,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "Data Kontak",
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text("Data Kontak"),
-          centerTitle: true,
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.blueGrey,
         ),
-        body: const FormKontak(),
+        useMaterial3: true,
       ),
+      home: FormKontak(),
     );
   }
 }

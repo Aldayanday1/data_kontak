@@ -39,82 +39,89 @@ class _FormKontakState extends State<FormKontak> {
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: _formkey,
-      child: Column(
-        children: [
-          Container(
-            margin: EdgeInsets.all(10),
-            child: TextFormField(
-              decoration:
-                  InputDecoration(labelText: "Nama", hintText: "Masukkan Nama"),
-              controller: _namaController,
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Data Kontak"),
+        centerTitle: true,
+        backgroundColor: Color.fromARGB(255, 200, 210, 214),
+      ),
+      body: Form(
+        key: _formkey,
+        child: Column(
+          children: [
+            Container(
+              margin: EdgeInsets.all(10),
+              child: TextFormField(
+                decoration: InputDecoration(
+                    labelText: "Nama", hintText: "Masukkan Nama"),
+                controller: _namaController,
+              ),
             ),
-          ),
-          Container(
-            margin: EdgeInsets.all(10),
-            child: TextFormField(
-              decoration: InputDecoration(
-                  labelText: "Email", hintText: "Masukkan Email"),
-              controller: _emailController,
+            Container(
+              margin: EdgeInsets.all(10),
+              child: TextFormField(
+                decoration: InputDecoration(
+                    labelText: "Email", hintText: "Masukkan Email"),
+                controller: _emailController,
+              ),
             ),
-          ),
-          Container(
-            margin: EdgeInsets.all(10),
-            child: TextFormField(
-              decoration: InputDecoration(
-                  labelText: "Alamat", hintText: "Masukkan Alamat"),
-              controller: _alamatController,
+            Container(
+              margin: EdgeInsets.all(10),
+              child: TextFormField(
+                decoration: InputDecoration(
+                    labelText: "Alamat", hintText: "Masukkan Alamat"),
+                controller: _alamatController,
+              ),
             ),
-          ),
-          Container(
-            margin: EdgeInsets.all(10),
-            child: TextFormField(
-              decoration: InputDecoration(
-                  labelText: "No Telepon", hintText: "Masukkan No Telepon"),
-              controller: _noTeleponController,
+            Container(
+              margin: EdgeInsets.all(10),
+              child: TextFormField(
+                decoration: InputDecoration(
+                    labelText: "No Telepon", hintText: "Masukkan No Telepon"),
+                controller: _noTeleponController,
+              ),
             ),
-          ),
-          SizedBox(
-            height: 50,
-          ),
-          _image == null
-              ? const Text("Tidak ada gambar yang dipilih")
-              : Image.file(_image!),
-          Padding(
-            padding: const EdgeInsets.only(bottom: 25, top: 35),
-            child: ElevatedButton(
-              onPressed: () {
-                getImage();
-              },
-              child: Text("Pilih Gambar"),
+            SizedBox(
+              height: 50,
             ),
-          ),
-          Container(
-            margin: EdgeInsets.all(10),
-            child: ElevatedButton(
-              onPressed: () async {
-                if (_formkey.currentState!.validate()) {
-                  // Proses simpan data
-                  var result = await KontakController().addPerson(
-                    Kontak(
-                      nama: _namaController.text,
-                      email: _emailController.text,
-                      alamat: _alamatController.text,
-                      noTelepon: _noTeleponController.text,
-                      foto: _image!.path,
-                    ),
-                    _image,
-                  );
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text(result['message'])),
-                  );
-                }
-              },
-              child: Text("Simpan"),
+            _image == null
+                ? const Text("Tidak ada gambar yang dipilih")
+                : Image.file(_image!),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 25, top: 35),
+              child: ElevatedButton(
+                onPressed: () {
+                  getImage();
+                },
+                child: Text("Pilih Gambar"),
+              ),
             ),
-          ),
-        ],
+            Container(
+              margin: EdgeInsets.all(10),
+              child: ElevatedButton(
+                onPressed: () async {
+                  if (_formkey.currentState!.validate()) {
+                    // Proses simpan data
+                    var result = await KontakController().addPerson(
+                      Kontak(
+                        nama: _namaController.text,
+                        email: _emailController.text,
+                        alamat: _alamatController.text,
+                        noTelepon: _noTeleponController.text,
+                        foto: _image!.path,
+                      ),
+                      _image,
+                    );
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text(result['message'])),
+                    );
+                  }
+                },
+                child: Text("Simpan"),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
