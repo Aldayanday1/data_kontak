@@ -25,4 +25,13 @@ class KontakService {
 
     return await http.Response.fromStream(await request.send());
   }
+
+  Future<List<dynamic>> fetchPeople() async {
+    var response = await http.get(
+      getUri(endpoint),
+      headers: {
+        "Accept": "application/json",
+      },
+    );
+  }
 }
