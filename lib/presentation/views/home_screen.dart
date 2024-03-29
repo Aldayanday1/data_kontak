@@ -12,6 +12,11 @@ class _HomeViewState extends State<HomeView> {
   final KontakController _controller = KontakController();
 
   @override
+  void initState() {
+    super.initState();
+    _controller.getPeople();
+  }
+
   Widget build(BuildContext context) {
     return const Placeholder();
   }
