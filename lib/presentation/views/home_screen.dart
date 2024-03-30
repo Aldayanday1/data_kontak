@@ -30,7 +30,11 @@ class _HomeViewState extends State<HomeView> {
             return const Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError) {
             return Center(child: Text("Error: ${snapshot.error}"));
-          } else {}
+          } else {
+            return ListView.builder(
+                itemCount: snapshot.data?.length ?? 0,
+                itemBuilder: (context, index) {});
+          }
         },
       ),
     );
