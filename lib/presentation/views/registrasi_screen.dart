@@ -103,8 +103,9 @@ class _FormKontakState extends State<FormKontak> {
               child: ElevatedButton(
                 onPressed: () async {
                   if (_formkey.currentState!.validate()) {
+                    _formkey.currentState!.save();
                     // Proses simpan data
-                    var result = await KontakController().addPerson(
+                    var result = await _personController.addPerson(
                       Kontak(
                         nama: _namaController.text,
                         email: _emailController.text,
