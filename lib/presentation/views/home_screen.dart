@@ -55,6 +55,7 @@ class _HomeViewState extends State<HomeView> {
             MaterialPageRoute(builder: (context) => const FormKontak()),
           );
         },
+        child: const Icon(Icons.add),
       ),
     );
   }
