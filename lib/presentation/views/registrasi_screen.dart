@@ -104,17 +104,15 @@ class _FormKontakState extends State<FormKontak> {
                 onPressed: () async {
                   if (_formkey.currentState!.validate()) {
                     _formkey.currentState!.save();
-                    // Proses simpan data
-                    var result = await _personController.addPerson(
-                      Kontak(
-                        nama: _namaController.text,
-                        email: _emailController.text,
-                        alamat: _alamatController.text,
-                        noTelepon: _noTeleponController.text,
-                        foto: _image!.path,
-                      ),
-                      _image,
+                    Kontak _person = Kontak(
+                      nama: _namaController.text,
+                      email: _emailController.text,
+                      alamat: _alamatController.text,
+                      noTelepon: _noTeleponController.text,
+                      foto: _image!.path,
                     );
+                    // Proses simpan data
+                    var result = await _personController.addPerson();
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(content: Text(result['message'])),
                     );
