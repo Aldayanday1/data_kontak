@@ -22,6 +22,8 @@ class _FormKontakState extends State<FormKontak> {
   final _alamatController = TextEditingController();
   final _noTeleponController = TextEditingController();
 
+  final KontakController _personController = KontakController();
+
   Future<void> getImage() async {
     final XFile? pickerFile =
         await _imagePicker.pickImage(source: ImageSource.gallery);
