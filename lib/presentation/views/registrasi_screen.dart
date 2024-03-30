@@ -125,7 +125,7 @@ class _FormKontakState extends State<FormKontak> {
                     );
                   }
                 },
-                child: Text("Simpan"),
+                child: const Text("Submit"),
               ),
             ),
           ],
