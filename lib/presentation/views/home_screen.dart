@@ -35,6 +35,13 @@ class _HomeViewState extends State<HomeView> {
               itemCount: snapshot.data?.length ?? 0,
               itemBuilder: (context, index) {
                 Person person = snapshot.data![index];
+                return ListTile(
+                  title: Text(person.nama),
+                  subtitle: Text(person.email),
+                  leading: CircleAvatar(
+                    backgroundImage: NetworkImage(person.gambar),
+                  ),
+                );
               },
             );
           }
