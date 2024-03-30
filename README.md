@@ -1,16 +1,15 @@
 # data_kontak
 
-A new Flutter project.
+Mochamad Aldi Raihan Fachrizal | 20210140150
 
-## Getting Started
+## Form Registrasi (Belum Diisi)
 
-This project is a starting point for a Flutter application.
+![image](https://github.com/Aldayanday1/data_kontak/assets/91641328/bf5c64fa-e83d-46c8-b695-29f4bbe9d0e7)
 
-A few resources to get you started if this is your first Flutter project:
+## Form Registrasi (Sudah Diisi)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+![image](https://github.com/Aldayanday1/data_kontak/assets/91641328/8ea1ed61-a2bc-44d3-a8b9-41edcde39a1d)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Halaman Home
+
+![image](https://github.com/Aldayanday1/data_kontak/assets/91641328/8e1e4dc4-f0b5-47aa-8495-f2c472bd7c66)
