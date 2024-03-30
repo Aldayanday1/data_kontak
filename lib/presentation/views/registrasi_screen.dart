@@ -112,7 +112,8 @@ class _FormKontakState extends State<FormKontak> {
                       foto: _image!.path,
                     );
                     // Proses simpan data
-                    var result = await _personController.addPerson();
+                    var result =
+                        await _personController.addPerson(_person, _image);
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(content: Text(result['message'])),
                     );
