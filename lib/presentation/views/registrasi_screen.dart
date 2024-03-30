@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:data_kontak/presentation/controllers/kontak_controller.dart';
 import 'package:data_kontak/domain/model/kontak.dart';
+import 'package:data_kontak/presentation/views/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -116,6 +117,11 @@ class _FormKontakState extends State<FormKontak> {
                         await _personController.addPerson(_person, _image);
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(content: Text(result['message'])),
+                    );
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(builder: (context) => const HomeView()),
+                      (route) => false,
                     );
                   }
                 },
