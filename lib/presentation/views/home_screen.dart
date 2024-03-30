@@ -32,8 +32,11 @@ class _HomeViewState extends State<HomeView> {
             return Center(child: Text("Error: ${snapshot.error}"));
           } else {
             return ListView.builder(
-                itemCount: snapshot.data?.length ?? 0,
-                itemBuilder: (context, index) {});
+              itemCount: snapshot.data?.length ?? 0,
+              itemBuilder: (context, index) {
+                Person person = snapshot.data![index];
+              },
+            );
           }
         },
       ),
