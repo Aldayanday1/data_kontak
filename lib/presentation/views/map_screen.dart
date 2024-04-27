@@ -81,6 +81,11 @@ class _MapScreenState extends State<MapScreen> {
                 position: _lastMapPosition!,
               ),
           },
+          onTap: (position) {
+            setState(() {
+              _lastMapPosition = position;
+            });
+          },
         ));
   }
 }
