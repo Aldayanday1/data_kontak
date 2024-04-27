@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class MapScreen extends StatefulWidget {
@@ -18,6 +19,21 @@ class _MapScreenState extends State<MapScreen> {
   LatLng? _lastMapPosition;
 
   @override
+  void initState() {
+    super.initState();
+    _getCurrentLocation(); // Request permissions on Init
+  }
+
+  // Fetch the current location
+  Future<void> _getCurrentLocation() async {
+    // Check if location services are enabled
+    await Geolocator.requestPermission()
+        .then((value) {})
+        .onError((error, stackTrace) async {
+      await Geolocator.requestPermission();
+    });
+  }
+
   Widget build(BuildContext context) {
     return const Placeholder();
   }
