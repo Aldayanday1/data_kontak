@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:data_kontak/presentation/controllers/kontak_controller.dart';
 import 'package:data_kontak/domain/model/kontak.dart';
-import 'package:data_kontak/presentation/views/home_screen.dart';
 import 'package:data_kontak/presentation/views/map_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -123,17 +122,15 @@ class _FormKontakState extends State<FormKontak> {
               ),
             ),
             SizedBox(
-              height: 50,
+              height: 240,
+              width: 240,
+              child: _image == null
+                  ? const Text("Tidak ada gambar yang dipilih")
+                  : Image.file(_image!),
             ),
-            _image == null
-                ? const Text("Tidak ada gambar yang dipilih")
-                : Image.file(_image!),
-            Padding(
-              padding: const EdgeInsets.only(bottom: 25, top: 35),
-              child: ElevatedButton(
-                onPressed: getImage,
-                child: Text("Pilih Gambar"),
-              ),
+            ElevatedButton(
+              onPressed: getImage,
+              child: Text("Pilih Gambar"),
             ),
             Container(
               margin: const EdgeInsets.all(10),

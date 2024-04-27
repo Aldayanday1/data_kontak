@@ -1,4 +1,3 @@
-import 'package:data_kontak/presentation/views/home_screen.dart';
 import 'package:data_kontak/presentation/views/registrasi_screen.dart';
 import 'package:flutter/material.dart';
 
