@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:data_kontak/presentation/controllers/kontak_controller.dart';
 import 'package:data_kontak/domain/model/kontak.dart';
 import 'package:data_kontak/presentation/views/home_screen.dart';
+import 'package:data_kontak/presentation/views/map_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -38,85 +39,133 @@ class _FormKontakState extends State<FormKontak> {
   Widget build(BuildContext context) {
     return Form(
       key: _formKey,
-      child: Column(
-        children: [
-          Container(
-            margin: EdgeInsets.all(10),
-            child: TextFormField(
-              decoration:
-                  InputDecoration(labelText: "Nama", hintText: "Masukkan Nama"),
-              controller: _namaController,
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+              margin: EdgeInsets.all(10),
+              child: TextFormField(
+                decoration: InputDecoration(
+                  labelText: "Nama",
+                  hintText: "Masukkan Nama",
+                ),
+                controller: _namaController,
+              ),
             ),
-          ),
-          Container(
-            margin: EdgeInsets.all(10),
-            child: TextFormField(
-              decoration: InputDecoration(
-                  labelText: "Email", hintText: "Masukkan Email"),
-              controller: _emailController,
+            Container(
+              margin: EdgeInsets.all(10),
+              child: TextFormField(
+                decoration: InputDecoration(
+                  labelText: "Email",
+                  hintText: "Masukkan Email",
+                ),
+                controller: _emailController,
+              ),
             ),
-          ),
-          Container(
-            margin: EdgeInsets.all(10),
-            child: TextFormField(
-              decoration: InputDecoration(
-                  labelText: "Alamat", hintText: "Masukkan Alamat"),
-              controller: _alamatController,
+            Container(
+              width: double.infinity,
+              padding: const EdgeInsets.all(10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text("Alamat"),
+                  _alamat == null
+                      ? const SizedBox(
+                          width: double.infinity,
+                          child: Text('Alamat kosong'),
+                        )
+                      : Text('$_alamat'),
+                  _alamat == null
+                      ? TextButton(
+                          onPressed: () async {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => MapScreen(
+                                    onLocationSelected: (selectedAddress) {
+                                  setState(() {
+                                    _alamat = selectedAddress;
+                                  });
+                                }),
+                              ),
+                            );
+                          },
+                          child: const Text('Pilih Alamat'),
+                        )
+                      : TextButton(
+                          onPressed: () async {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => MapScreen(
+                                    onLocationSelected: (selectedAddress) {
+                                  setState(() {
+                                    _alamat = selectedAddress;
+                                  });
+                                }),
+                              ),
+                            );
+                            setState(() {});
+                          },
+                          child: const Text('Ubah Alamat'),
+                        ),
+                ],
+              ),
             ),
-          ),
-          Container(
-            margin: EdgeInsets.all(10),
-            child: TextFormField(
-              decoration: InputDecoration(
-                  labelText: "No Telepon", hintText: "Masukkan No Telepon"),
-              controller: _noTeleponController,
+            Container(
+              margin: EdgeInsets.all(10),
+              child: TextFormField(
+                decoration: InputDecoration(
+                    labelText: "No Telepon", hintText: "Masukkan No Telepon"),
+                controller: _noTeleponController,
+              ),
             ),
-          ),
-          SizedBox(
-            height: 50,
-          ),
-          _image == null
-              ? const Text("Tidak ada gambar yang dipilih")
-              : Image.file(_image!),
-          Padding(
-            padding: const EdgeInsets.only(bottom: 25, top: 35),
-            child: ElevatedButton(
-              onPressed: () {
-                getImage();
-              },
-              child: Text("Pilih Gambar"),
+            SizedBox(
+              height: 50,
             ),
-          ),
-          Container(
-            margin: EdgeInsets.all(10),
-            child: ElevatedButton(
-              onPressed: () async {
-                if (_formKey.currentState!.validate()) {
-                  _formKey.currentState!.save();
-                  Kontak _person = Kontak(
-                    nama: _namaController.text,
-                    email: _emailController.text,
-                    alamat: _alamatController.text,
-                    noTelepon: _noTeleponController.text,
-                    foto: _image!.path,
-                  );
-                  // Proses simpan data
-                  var result =
-                      await _personController.addPerson(_person, _image);
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text(result['message'])),
-                  );
-                  Navigator.pushAndRemoveUntil(
-                    context,
-                    MaterialPageRoute(builder: (context) => const HomeView()),
-                    (route) => false,
-                  );
-                }
-              },
-              child: const Text("Submit"),
+            _image == null
+                ? const Text("Tidak ada gambar yang dipilih")
+                : Image.file(_image!),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 25, top: 35),
+              child: ElevatedButton(
+                onPressed: () {
+                  getImage();
+                },
+                child: Text("Pilih Gambar"),
+              ),
             ),
-          ),
-        ],
+            Container(
+              margin: EdgeInsets.all(10),
+              child: ElevatedButton(
+                onPressed: () async {
+                  if (_formKey.currentState!.validate()) {
+                    _formKey.currentState!.save();
+                    Kontak _person = Kontak(
+                      nama: _namaController.text,
+                      email: _emailController.text,
+                      alamat: _alamatController.text,
+                      noTelepon: _noTeleponController.text,
+                      foto: _image!.path,
+                    );
+                    // Proses simpan data
+                    var result =
+                        await _personController.addPerson(_person, _image);
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text(result['message'])),
+                    );
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(builder: (context) => const HomeView()),
+                      (route) => false,
+                    );
+                  }
+                },
+                child: const Text("Submit"),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
