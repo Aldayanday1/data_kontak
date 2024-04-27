@@ -116,7 +116,9 @@ class _FormKontakState extends State<FormKontak> {
               margin: EdgeInsets.all(10),
               child: TextFormField(
                 decoration: InputDecoration(
-                    labelText: "No Telepon", hintText: "Masukkan No Telepon"),
+                  labelText: "No Telepon",
+                  hintText: "Masukkan No Telepon",
+                ),
                 controller: _noTeleponController,
               ),
             ),
@@ -129,39 +131,32 @@ class _FormKontakState extends State<FormKontak> {
             Padding(
               padding: const EdgeInsets.only(bottom: 25, top: 35),
               child: ElevatedButton(
-                onPressed: () {
-                  getImage();
-                },
+                onPressed: getImage,
                 child: Text("Pilih Gambar"),
               ),
             ),
             Container(
-              margin: EdgeInsets.all(10),
+              margin: const EdgeInsets.all(10),
               child: ElevatedButton(
                 onPressed: () async {
                   if (_formKey.currentState!.validate()) {
-                    _formKey.currentState!.save();
-                    Kontak _person = Kontak(
-                      nama: _namaController.text,
-                      email: _emailController.text,
-                      alamat: _alamatController.text,
-                      noTelepon: _noTeleponController.text,
-                      foto: _image!.path,
-                    );
                     // Proses simpan data
-                    var result =
-                        await _personController.addPerson(_person, _image);
+                    var result = await KontakController().addPerson(
+                      Kontak(
+                        nama: _namaController.text,
+                        email: _emailController.text,
+                        alamat: _alamat ?? '',
+                        noTelepon: _noTeleponController.text,
+                        foto: _image!.path,
+                      ),
+                      _image,
+                    );
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(content: Text(result['message'])),
                     );
-                    Navigator.pushAndRemoveUntil(
-                      context,
-                      MaterialPageRoute(builder: (context) => const HomeView()),
-                      (route) => false,
-                    );
                   }
                 },
-                child: const Text("Submit"),
+                child: const Text("Simpan"),
               ),
             ),
           ],
