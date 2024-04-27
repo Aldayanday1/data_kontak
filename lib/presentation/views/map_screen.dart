@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class MapScreen extends StatefulWidget {
   // onLocationSelected ialah variable yg bertipekan function yg menerima parameter dalam bentuk string
@@ -13,6 +14,9 @@ class MapScreen extends StatefulWidget {
 }
 
 class _MapScreenState extends State<MapScreen> {
+  late GoogleMapController mapController; // Controller for the Google Map
+  LatLng? _lastMapPosition;
+
   @override
   Widget build(BuildContext context) {
     return const Placeholder();
