@@ -74,6 +74,13 @@ class _MapScreenState extends State<MapScreen> {
                 const LatLng(0.0, 0.0), // Jakarta coordinates
             zoom: 20.0,
           ),
+          markers: {
+            if (_lastMapPosition != null)
+              Marker(
+                markerId: const MarkerId('currentLocation'),
+                position: _lastMapPosition!,
+              ),
+          },
         ));
   }
 }
