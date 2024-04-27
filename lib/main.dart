@@ -1,4 +1,5 @@
 import 'package:data_kontak/presentation/views/home_screen.dart';
+import 'package:data_kontak/presentation/views/registrasi_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -19,7 +20,13 @@ class MyApp extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-      home: HomeView(),
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text("Maps API"),
+          centerTitle: true,
+        ),
+        body: FormKontak(),
+      ),
     );
   }
 }
