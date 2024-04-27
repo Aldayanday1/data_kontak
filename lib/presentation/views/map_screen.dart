@@ -53,9 +53,27 @@ class _MapScreenState extends State<MapScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Select Location"),
-      ),
-    );
+        appBar: AppBar(
+          title: const Text("Select Location"),
+        ),
+        body: GoogleMap(
+          myLocationEnabled: true,
+          myLocationButtonEnabled: true,
+          buildingsEnabled: true,
+          trafficEnabled: true,
+          zoomControlsEnabled: true,
+          rotateGesturesEnabled: true,
+          mapToolbarEnabled: true,
+
+          // on below line setting compass enabled.
+          compassEnabled: true,
+          onMapCreated: _onMapCreated,
+          //mapType: MapType.normal,
+          initialCameraPosition: CameraPosition(
+            target: _lastMapPosition ??
+                const LatLng(0.0, 0.0), // Jakarta coordinates
+            zoom: 20.0,
+          ),
+        ));
   }
 }
