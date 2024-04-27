@@ -8,7 +8,8 @@ class MapScreen extends StatefulWidget {
   const MapScreen({super.key, required this.onLocationSelected});
 
   @override
-  State<MapScreen> createState() => _MapScreenState();
+  // ignore: library_private_types_in_public_api
+  _MapScreenState createState() => _MapScreenState();
 }
 
 class _MapScreenState extends State<MapScreen> {
