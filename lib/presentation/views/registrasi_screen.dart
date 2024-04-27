@@ -16,11 +16,11 @@ class FormKontak extends StatefulWidget {
 class _FormKontakState extends State<FormKontak> {
   File? _image;
   final _imagePicker = ImagePicker();
+  String? _alamat;
 
-  final _formkey = GlobalKey<FormState>();
+  final _formKey = GlobalKey<FormState>();
   final _namaController = TextEditingController();
   final _emailController = TextEditingController();
-  final _alamatController = TextEditingController();
   final _noTeleponController = TextEditingController();
 
   final KontakController _personController = KontakController();
@@ -49,7 +49,7 @@ class _FormKontakState extends State<FormKontak> {
         backgroundColor: Color.fromARGB(255, 200, 210, 214),
       ),
       body: Form(
-        key: _formkey,
+        key: _formKey,
         child: Column(
           children: [
             Container(
@@ -103,8 +103,8 @@ class _FormKontakState extends State<FormKontak> {
               margin: EdgeInsets.all(10),
               child: ElevatedButton(
                 onPressed: () async {
-                  if (_formkey.currentState!.validate()) {
-                    _formkey.currentState!.save();
+                  if (_formKey.currentState!.validate()) {
+                    _formKey.currentState!.save();
                     Kontak _person = Kontak(
                       nama: _namaController.text,
                       email: _emailController.text,
