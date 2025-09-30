@@ -1,8 +1,6 @@
-Mochamad Aldi Raihan Fachrizal | 20210140150
+Data Contacts Learning
 
-## Pertemuan 7 
-
-Session 7 - Maps API
+## Maps API
 
 ## 1. Memilih Lokasi pada Maps
 
@@ -12,9 +10,7 @@ Session 7 - Maps API
 
 <img src="https://github.com/Aldayanday1/data_kontak/assets/91641328/39340e2b-650b-472f-99e6-35bdd0416399" width="350" height="750">
 
-## Pertemuan 6
-
-Session 6 - MySQL
+## MySQL
 
 ## 1. Form Registrasi (Belum Diisi)
 
